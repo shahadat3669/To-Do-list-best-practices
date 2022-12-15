@@ -1,6 +1,6 @@
-const list = document.querySelector('.list-ul');
+import { sortItems } from './helper.js';
 
-const sortItems = (items) => items.sort((a, b) => a.index - b.index);
+const list = document.querySelector('.list-ul');
 
 const bindTaskEvents = async (taskListItem, newTodoList) => {
   const todoItemId = taskListItem.id;

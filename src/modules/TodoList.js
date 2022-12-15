@@ -1,3 +1,4 @@
+import { sortItems } from './helper.js';
 import TodoItem from './TodoItem.js';
 
 export default class TodoList {
@@ -31,7 +32,7 @@ export default class TodoList {
   }
 
   removeTodoItemByCompleted() {
-    this.todoList = this.todoList.sort((a, b) => a.index - b.index);
+    this.todoList = sortItems(this.todoList);
     this.todoList = this.todoList.filter((item) => !item.completed);
     this.todoList = this.todoList.map((item, i) => {
       item.index = i + 1;
