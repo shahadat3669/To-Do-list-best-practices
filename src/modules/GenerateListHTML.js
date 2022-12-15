@@ -8,20 +8,20 @@ const sortItems = (items) => {
 const bindTaskEvents = async (taskListItem, newTodoList) => {
   const todoItemId = taskListItem.id;
   const checkBox = taskListItem.querySelector('input[type="checkbox"]');
-  const icon1 = taskListItem.querySelector('.trash');
-  const icon2 = taskListItem.querySelector('.ellipsis');
+  const trashIcon = taskListItem.querySelector('.trash');
+  const ellipsisIcon = taskListItem.querySelector('.ellipsis');
   const description = taskListItem.querySelector('input[name="description"]');
 
-  icon1.addEventListener('click', async () => {
+  trashIcon.addEventListener('click', async () => {
     await newTodoList.removeTodoItem(parseInt(todoItemId, 10));
     // eslint-disable-next-line no-use-before-define
     generateListHTML(newTodoList);
   });
-  icon2.addEventListener('click', () => {
+  ellipsisIcon.addEventListener('click', () => {
     description.removeAttribute('readOnly');
     description.classList.add('active-item');
-    icon1.classList.remove('hidden');
-    icon2.classList.add('hidden');
+    trashIcon.classList.remove('hidden');
+    ellipsisIcon.classList.add('hidden');
   });
 
   description.addEventListener('focusout', (event) => {
@@ -33,8 +33,8 @@ const bindTaskEvents = async (taskListItem, newTodoList) => {
   document.addEventListener('click', (event) => {
     const isClickInsideElement = taskListItem.contains(event.target);
     if (!isClickInsideElement) {
-      icon1.classList.add('hidden');
-      icon2.classList.remove('hidden');
+      trashIcon.classList.add('hidden');
+      ellipsisIcon.classList.remove('hidden');
     }
   });
 
