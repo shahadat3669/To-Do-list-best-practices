@@ -1,9 +1,6 @@
 const list = document.querySelector('.list-ul');
 
-const sortItems = (items) => {
-  const sortedItems = items.sort((a, b) => a.index - b.index);
-  return sortedItems;
-};
+const sortItems = (items) => items.sort((a, b) => a.index - b.index);
 
 const bindTaskEvents = async (taskListItem, newTodoList) => {
   const todoItemId = taskListItem.id;
@@ -17,6 +14,7 @@ const bindTaskEvents = async (taskListItem, newTodoList) => {
     // eslint-disable-next-line no-use-before-define
     generateListHTML(newTodoList);
   });
+
   ellipsisIcon.addEventListener('click', () => {
     description.removeAttribute('readOnly');
     description.classList.add('active-item');
