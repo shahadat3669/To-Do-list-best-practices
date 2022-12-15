@@ -32,10 +32,10 @@ export default class TodoList {
 
   removeTodoItemByCompleted() {
     this.todoList = this.todoList.sort((a, b) => a.index - b.index);
-    this.todoList = this.todoList.filter((t) => !t.completed);
-    this.todoList = this.todoList.map((t, i) => {
-      t.index = i + 1;
-      return t;
+    this.todoList = this.todoList.filter((item) => !item.completed);
+    this.todoList = this.todoList.map((item, i) => {
+      item.index = i + 1;
+      return item;
     });
     localStorage.setItem('todoList', JSON.stringify(this.todoList));
   }
